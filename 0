@@ -14,16 +14,16 @@ def parseDate(input_str):
     return None
 
 
-date_str = input('When were you born? ')
-# date_str = '27 June 1996'
+date_str = input('What is your birth date? ')
+
+# print ('Your birth date is', date_str)
 
 parsed_date = parseDate(date_str);
 
 if parsed_date is None:
     print('Invalid date!')
 else:
-    # print(dir(parsed_date))
-    month = parsed_date.month
-    day = parsed_date.day
-    print('Your day is',day,'and your month is',month)
+    month = parsed_date.date.month
+    day = parsed_date.date.day
+    print('Your month is',month,'and your day is',day)
 

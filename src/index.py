@@ -66,7 +66,7 @@ while parsed_date is None:
 
 month = parsed_date.month
 day = parsed_date.day
-print('Your day is', day, 'and your month is', month) # TODO: Remove
+# print('Your day is', day, 'and your month is', month) # TODO: Remove
 
 thing = getHoroscopeZodiacThing(day, month)
 
@@ -82,5 +82,5 @@ while run_loop:
         print('Bye!')
         run_loop = False
     else:
-        print('Wow, you\'re such a', thing)
+        print('Wow, you\'re such a', thing + '!')
 

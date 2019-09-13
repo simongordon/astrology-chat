@@ -99,8 +99,8 @@ const Home = () => {
           onSubmit={(values, { setSubmitting }) => {
             const birthdate = values.birthdate!;
 
-            const month = birthdate.month();
-            const day = birthdate.day();
+            const month = birthdate.month() + 1;
+            const day = birthdate.date();
 
             const match = data.filter(
               o =>

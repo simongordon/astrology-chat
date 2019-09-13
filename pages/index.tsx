@@ -133,6 +133,12 @@ const Home = () => {
           )}
         />
       )}
+      <p>
+        Want CSS?{" "}
+        <a href="https://github.com/simongordon/astrology-chat">
+          write it yourself
+        </a>
+      </p>
     </>
   );
 };

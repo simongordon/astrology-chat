@@ -1,7 +1,7 @@
 import React from "react";
 import Head from "next/head";
 import "./index.css";
-import { Formik, FormikErrors, Form } from "formik";
+import { Formik, FormikErrors, Form, Field } from "formik";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
@@ -21,8 +21,15 @@ const data = [
   { name: "Pisces", m1: 2, d1: 19, m2: 3, d2: 20 }
 ];
 
+interface HistoryItem {
+  sent: string;
+  received: string;
+  // key: number | string;
+}
+
 const Home = () => {
   const [starSign, setStarSign] = React.useState<string | null>(null);
+  const [chatHistory, setChatHistory] = React.useState<HistoryItem[]>([]);
   return (
     <>
       <Head>
@@ -32,7 +39,52 @@ const Home = () => {
       <h1>Astrology chat</h1>
 
       {starSign ? (
-        <p>You are a {starSign}</p>
+        <>
+          {chatHistory.length ? (
+            <ul>
+              {chatHistory.map((o, i) => (
+                <li key={i}>
+                  You: {o.sent}
+                  <br />
+                  Me: {o.received}
+                </li>
+              ))}
+            </ul>
+          ) : null}
+          <Formik
+            initialValues={{ message: "" }}
+            validate={values => {
+              const errors: FormikErrors<typeof values> = {};
+              if (!values.message) {
+                errors.message = "Required";
+              }
+              return errors;
+            }}
+            onSubmit={({ message }, { setSubmitting, resetForm }) => {
+              setChatHistory(
+                chatHistory.concat({
+                  sent: message,
+                  received: `Wow, you're such a ${starSign}`
+                })
+              );
+
+              resetForm();
+              setSubmitting(false);
+            }}
+            render={({ errors, isSubmitting }) => (
+              <Form>
+                <p>Talk to me!</p>
+                <Field name="message" id="message" />
+                {errors.message ? <p>{errors.message}</p> : null}
+                <p>
+                  <button type="submit" disabled={isSubmitting}>
+                    Submit
+                  </button>
+                </p>
+              </Form>
+            )}
+          />
+        </>
       ) : (
         <Formik
           initialValues={{ birthdate: null as null | moment.Moment }}
@@ -61,6 +113,7 @@ const Home = () => {
           }}
           render={({ values, errors, setFieldValue, isSubmitting }) => (
             <Form>
+              <p>What is your birth date?</p>
               <Datetime
                 timeFormat={false}
                 value={values.birthdate}

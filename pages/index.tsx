@@ -45,10 +45,18 @@ const Home = () => {
             return errors;
           }}
           onSubmit={(values, { setSubmitting }) => {
-            const f = values.birthdate!;
+            const birthdate = values.birthdate!;
+
+            const month = birthdate.month();
+            const day = birthdate.day();
+
+            const match = data.filter(
+              o =>
+                (day >= o.d1 && month == o.m1) || (day <= o.d2 && month == o.m2)
+            )[0];
 
             // TODO: Properly
-            setStarSign(data[0].name);
+            setStarSign(match.name);
             setSubmitting(false);
           }}
           render={({ values, errors, setFieldValue, isSubmitting }) => (

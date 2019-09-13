@@ -5,6 +5,7 @@ import { Formik, FormikErrors, Form, Field } from "formik";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
+import "moment/locale/en-au";
 
 const data = [
   { name: "Aries", m1: 3, d1: 21, m2: 5, d2: 19 },

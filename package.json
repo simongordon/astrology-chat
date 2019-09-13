@@ -1,0 +1,27 @@
+{
+  "name": "astrology-chat",
+  "version": "1.0.0",
+  "description": "AI chatbot",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/simongordon/astrology-chat.git"
+  },
+  "author": "Simon Gordon",
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "next": "9.0.5",
+    "react": "16.9.0",
+    "react-dom": "16.9.0"
+  },
+  "devDependencies": {
+    "@types/node": "^12.7.3",
+    "@types/react": "^16.9.2",
+    "typescript": "^3.6.2"
+  },
+  "homepage": "https://github.com/simongordon/astrology-chat#readme"
+}

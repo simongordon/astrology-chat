@@ -117,6 +117,7 @@ const Home = () => {
               <Datetime
                 timeFormat={false}
                 value={values.birthdate}
+                closeOnSelect
                 onChange={e => {
                   setFieldValue("birthdate", e);
                 }}
